@@ -4,11 +4,11 @@ import com.spring.shop.domain.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
-    Set<Product> findAll();
+    List<Product> findAll();
     Product findByName(String name);
-    Set<Product> findByNameAndPrice(String name, float price);
+    List<Product> findByNameAndPrice(String name, float price);
 }
