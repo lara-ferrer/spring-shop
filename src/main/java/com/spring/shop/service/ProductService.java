@@ -1,11 +1,12 @@
 package com.spring.shop.service;
 
 import com.spring.shop.domain.Product;
+import com.spring.shop.exception.ProductNotFoundException;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ProductService {
-    Set<Product> findAllProducts();
-    Set<Product> findAllProducts(String category);
-    void increasePrice(Product product);
+    List<Product> findAllProducts();
+    List<Product> findAllProducts(String category);
+    Product findProduct(long id) throws ProductNotFoundException;
 }

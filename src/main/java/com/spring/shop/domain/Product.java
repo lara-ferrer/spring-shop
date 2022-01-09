@@ -3,7 +3,8 @@ package com.spring.shop.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,5 +23,7 @@ public class Product {
     @Column
     private float price;
     @Column(name = "creation_date")
-    private LocalDateTime creationDate;
+    private LocalDate creationDate;
+    @OneToMany(mappedBy = "product")
+    private List<Order> orders;
 }
