@@ -1,0 +1,26 @@
+<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form th:action="@{/add-user}" method="post" th:object="${user}">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Nombre de usuario" />
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="text" id="email" th:field="*{email}" class="form-control" placeholder="E-mail" />
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Contraseña" />
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Nombre" />
+                    <label for="first_name" class="form-label">Primer apellido</label>
+                    <input type="text" id="first_name" th:field="*{firstName}" class="form-control" placeholder="Primer apellido" />
+                    <label for="birth_date" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" id="birth_date" th:field="*{birthDate}" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" class="form-control" placeholder="Fecha de nacimiento" />
+                    <button type="submit" class="w-100 btn btn-primary btn-lg">Darme de alta</button>
+                </form>
+                <div th:if="${message}" class="alert alert-success" role="alert">
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
