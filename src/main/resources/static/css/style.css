@@ -1,7 +1,10 @@
+/********
+* HEADER *
+********/
+
 .header {
     padding: 2rem;
     background-color: #a1d4a1;
-    color: #000;
 }
 
 .nav__link {
@@ -46,5 +49,19 @@
 }
 
 .dropdown-toggle::after {
+    color: #fff;
+}
+
+
+/********
+* FOOTER *
+********/
+
+.footer {
+    background-color: #a1d4a1;
+}
+
+.footer a {
+    display: block;
     color: #fff;
 }
