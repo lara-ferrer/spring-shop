@@ -1,0 +1,24 @@
+<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+
+<main>
+    <div class="container shop">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-lg-4" th:each="product : ${products}">
+                <div class="card shadow-sm">
+                    <img th:src="${product.image}" th:alt="${product.name}" />
+                    <div class="card-body">
+                        <h3 th:text="${product.name}"></h3>
+                        <p class="card-text" th:text="${product.description}"></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a th:href="@{'productos/' + ${product.id}}" class="btn btn-sm btn-outline-secondary">Ver producto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>

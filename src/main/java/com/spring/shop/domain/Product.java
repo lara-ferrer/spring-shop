@@ -22,6 +22,8 @@ public class Product {
     private String category;
     @Column
     private float price;
+    @Column
+    private String image;
     @Column(name = "creation_date")
     private LocalDate creationDate;
     @OneToMany(mappedBy = "product")
