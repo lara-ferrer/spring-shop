@@ -26,7 +26,7 @@ public class User {
     @Column
     private String email;
     @Column(name = "birth_date")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
     @OneToMany(mappedBy = "user")
     List<Order> orders;
