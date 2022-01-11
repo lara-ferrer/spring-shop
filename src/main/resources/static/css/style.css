@@ -3,3 +3,48 @@
     background-color: #a1d4a1;
     color: #000;
 }
+
+.nav__link {
+    font-family: 'Reem Kufi', 'Arial', sans-serif;
+    padding: 0 0.5rem!important;
+    color: #fff;
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: 0.4s ease-in;
+    font-size: 1.2em;
+    margin-top: 0.6em;
+}
+
+.nav__link:hover {
+    color: #e6f3e6;
+    transition: 0.4s ease-in;
+}
+
+.nav__logo {
+    margin-right: 1em;
+}
+
+.btn, .btn:hover {
+    transition: 0.4s ease-in;
+}
+
+.btn__sign-up {
+    background-color: #fff;
+    color: #a1d4a1;
+}
+
+.btn__sign-up:hover {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+.btn-outline-light:hover {
+    color: #fff;
+    background-color: #ffffff26;
+}
+
+.dropdown-toggle::after {
+    color: #fff;
+}
