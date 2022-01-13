@@ -57,6 +57,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-shop</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
