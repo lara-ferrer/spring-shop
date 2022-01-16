@@ -1,20 +1,14 @@
-version: '3.1'
+version: '3.9'
 services:
   spring:
-    image: 'spring-shop.jar'
+    build: .
     ports:
       - "8080:8080"
     depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=pass1234
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - db
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0.27
     restart: always
     environment:
       MYSQL_DATABASE: 'spring-shop'
@@ -23,13 +17,11 @@ services:
       MYSQL_ROOT_PASSWORD: 'mysql'
     ports:
       - '3306:3306'
-    expose:
-      - '3306'
     volumes:
-      - my-db:/var/lib/mysql
+      - db-vol:/var/lib/mysql
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10
 volumes:
-  my-db: {}
+  db-vol: {}
