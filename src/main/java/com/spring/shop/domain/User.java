@@ -1,6 +1,7 @@
 package com.spring.shop.domain;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class User {
     @Column
     private String email;
     @Column(name = "birth_date")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
     @OneToMany(mappedBy = "user")
     List<Order> orders;
