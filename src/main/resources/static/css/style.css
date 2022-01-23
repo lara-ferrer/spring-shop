@@ -1,3 +1,52 @@
+/*****************
+* GENERAL STYLES *
+*****************/
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Reem Kufi', 'Arial', sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin: 0.8em 0;
+}
+
+body, p, span {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+strong {
+    font-weight: 700;
+}
+
+a, a:hover {
+    transition: 0.4s ease-in;
+}
+
+a {
+    text-decoration: none;
+    color: #a1d4a1;
+}
+
+a:hover {
+    color: #61b161;
+}
+
+.btn {
+    background-color: #61b161;
+    border-radius: 0;
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background-color: #418541;
+    color: #fff;
+}
+
 /********
 * HEADER *
 ********/
@@ -54,8 +103,75 @@
 
 
 /********
-* FOOTER *
+* HERO *
 ********/
+
+.hero {
+    background-image: url('/images/likenuggets.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10em 0;
+}
+
+.hero__content {
+    background-color: #fff;
+    padding: 2em 1em;
+}
+
+.product-highlight {
+    padding: 1em;
+    background-color: #a1d4a1;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.2em;
+}
+
+.hero__title {
+    margin: 0.8em 0 0.4em 0;
+}
+
+
+/********
+* INTRO *
+********/
+
+.intro {
+    margin: 4em 0 2em 0;
+}
+
+.intro__title {
+    color: #a1d4a1;
+    margin-bottom: 0.5em;
+}
+
+/**********
+* CATALOG *
+**********/
+
+.catalog {
+    margin: 2em 0 4em 0;
+}
+
+.product__img {
+    width: 70%;
+    height: 400px;
+    object-fit: contain;
+}
+
+.product__title {
+    color: #000;
+}
+
+.card {
+    border-radius: 0;
+    height: 600px;
+}
+
+/*********
+* FOOTER *
+*********/
 
 .footer {
     background-color: #a1d4a1;
@@ -67,10 +183,10 @@
 }
 
 
-/************
-* SHOP PAGE *
-************/
+/*********
+* TRUMPS *
+*********/
 
-.shop {
-    padding: 3em 0;
+.align-center {
+    text-align: center;
 }

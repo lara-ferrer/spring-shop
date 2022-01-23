@@ -26,6 +26,7 @@ public class Product {
     private String image;
     @Column(name = "creation_date")
     private LocalDate creationDate;
+
     @OneToMany(mappedBy = "product")
     private List<Order> orders;
 }
