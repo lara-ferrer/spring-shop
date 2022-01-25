@@ -26,6 +26,13 @@ public class WebController {
         return "index";
     }
 
+    @RequestMapping(value = "/tienda")
+    public String shop(Model model) {
+        List<Product> products = productService.findAllProducts();
+        model.addAttribute("products", products);
+        return "tienda";
+    }
+
     @RequestMapping(value = "/productos/{id}")
     public String product(Model model, @PathVariable long id) throws ProductNotFoundException {
         Product product = productService.findProduct(id);
