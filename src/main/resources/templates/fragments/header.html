@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <title>Vegan Foods</title>
 
     <link href="/webjars/bootstrap/5.0.0-beta2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/utils.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
             </ul>
 
             <div class="text-end">
-                <a th:href="@{'/registro'}" class="btn btn__sign-up" sec:authorize="!isAuthenticated()">Registro</a>
+                <a th:href="@{'/registro'}" class="btn btn__sign-up mr--1" sec:authorize="!isAuthenticated()">Registro</a>
                 <a th:href="@{'/login'}" class="btn btn-outline-light" sec:authorize="!isAuthenticated()">Acceso usuarios</a>
             </div>
             <div class="dropdown text-end" sec:authorize="isAuthenticated()">
