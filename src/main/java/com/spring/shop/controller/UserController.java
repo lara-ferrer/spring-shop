@@ -32,12 +32,12 @@ public class UserController {
         return "registro";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/perfil-usuario")
     public String profile(Model model, HttpServletRequest request) {
         String remoteUsername = request.getRemoteUser();
         User remoteUser = userService.findByUsername(remoteUsername);
         model.addAttribute("user", remoteUser);
-        return "profile";
+        return "perfil-usuario";
     }
 
     @PostMapping("/registro-completado")
