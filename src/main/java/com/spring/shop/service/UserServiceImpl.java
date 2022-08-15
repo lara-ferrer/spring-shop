@@ -2,6 +2,7 @@ package com.spring.shop.service;
 
 import com.spring.shop.domain.Role;
 import com.spring.shop.domain.User;
+import com.spring.shop.exception.UserNotFoundException;
 import com.spring.shop.repository.RoleRepository;
 import com.spring.shop.repository.UserRepository;
 import com.spring.shop.security.Constants;
@@ -24,14 +25,41 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     @Override
-    public boolean add(User user) {
+    public boolean add(User user) throws UserNotFoundException {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new UserNotFoundException("El nombre de usuario ya existe. Por favor escoge otro.");
+        }
+
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new UserNotFoundException("El email ya existe. Por favor escoge otro.");
+        }
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setCreationDate(LocalDate.now());
         user.setActive(true);
         Role userRole = roleRepository.findByName(Constants.USER_ROLE);
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
         userRepository.save(user);
+
+        return true;
+    }
+
+    @Override
+    public boolean update(User user) throws UserNotFoundException {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        User newUser = userRepository.findById(user.getId())
+                .orElseThrow(UserNotFoundException::new);
+        newUser.setUsername(user.getUsername());
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        newUser.setName(user.getName());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setEmail(user.getEmail());
+        newUser.setAddress(user.getAddress());
+        newUser.setCity(user.getCity());
+
+        userRepository.save(newUser);
 
         return true;
     }

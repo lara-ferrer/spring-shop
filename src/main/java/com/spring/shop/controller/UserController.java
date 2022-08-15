@@ -1,6 +1,8 @@
 package com.spring.shop.controller;
 
 import com.spring.shop.domain.User;
+import com.spring.shop.exception.ProductNotFoundException;
+import com.spring.shop.exception.UserNotFoundException;
 import com.spring.shop.exception.UserRegistrationException;
 import com.spring.shop.service.UserService;
 import org.slf4j.Logger;
@@ -41,16 +43,29 @@ public class UserController {
     }
 
     @PostMapping("/registro-completado")
-    public String addUser(@ModelAttribute User user, Model model) throws UserRegistrationException {
-        logger.info("inicio addUser");
+    public String addUser(@ModelAttribute User user, Model model) throws UserRegistrationException, UserNotFoundException {
         boolean userAdded = userService.add(user);
         if (!userAdded)
             throw new UserRegistrationException("Error al registrar el usuario");
 
         logger.info("Usuario creado: " + user);
         model.addAttribute("user", user);
-        logger.info("final addUser");
         return "registro-completado";
+    }
+
+    @PostMapping("/usuario-actualizado")
+    public String updateUserInfo(@ModelAttribute User user, Model model) throws UserNotFoundException {
+        System.out.println("user id " + user.getId());
+        System.out.println("user username " + user.getUsername());
+        System.out.println("user apellido " + user.getFirstName());
+        System.out.println("user city " + user.getCity());
+        boolean updateUser = userService.update(user);
+        if (!updateUser)
+            throw new UserNotFoundException("Error al actualizar la información del usuario. Por favor, vuelve a intentarlo.");
+
+        logger.info("Usuario actualizado: " + user);
+        model.addAttribute("user", user);
+        return "usuario-actualizado";
     }
 
     @ExceptionHandler(UserRegistrationException.class)
@@ -63,6 +78,11 @@ public class UserController {
         mav.addObject("url", request.getRequestURL());
         mav.setViewName("error");
         return mav;
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public String handleUserValidationException(HttpServletRequest request, UserNotFoundException exception) {
+        return "product_error";
     }
 
     @ExceptionHandler
