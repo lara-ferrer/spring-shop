@@ -1,6 +1,9 @@
 /***********
 * SPACINGS *
 ***********/
+.m--0 {
+    margin: 0;
+}
 
 .mv--1 {
     margin: 1rem 0;
