@@ -8,8 +8,14 @@
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
         <main>
             <div class="container shop">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col-lg-4" th:each="product : ${products}">
+                <div class="row mt--5">
+                    <div class="col-lg-12">
+                        <h1>Catálogo on-line</h1>
+                        <p>Descubre nuestro amplio catálogo de productos veganos.</p>
+                    </div>
+                </div>
+                <div class="row mb--5">
+                    <div class="col-lg-4 mb--1" th:each="product : ${products}">
                         <div class="card shadow-sm">
                             <img th:src="${product.image}" th:alt="${product.name}" />
                             <div class="card-body">
