@@ -1,0 +1,82 @@
+/***********
+* SPACINGS *
+***********/
+.m--0 {
+    margin: 0;
+}
+
+.mv--1 {
+    margin: 1rem 0;
+}
+
+.mv--2 {
+    margin: 2rem 0;
+}
+
+.mt--2 {
+    margin: 2rem 0 0 0;
+}
+
+.mt--5 {
+    margin: 5rem 0 0 0;
+}
+
+.mb--1 {
+    margin: 0 0 1rem 0;
+}
+
+.mb--5 {
+    margin: 0 0 5rem 0;
+}
+
+.mv--3 {
+    margin: 3rem 0;
+}
+
+.mv--4 {
+    margin: 4rem 0;
+}
+
+.mv--5 {
+    margin: 5rem 0;
+}
+
+.mr--1 {
+    margin: 0 1rem 0 0;
+}
+
+.mr--2 {
+    margin: 0 2rem 0 0;
+}
+
+.ml--1 {
+    margin: 0 0 0 1rem;
+}
+
+.ml--2 {
+    margin: 0 0 0 2rem;
+}
+
+/***********
+* ALIGNMENT *
+***********/
+
+.align-center {
+    text-align: center;
+}
+
+/***********
+* TYPOGRAPHY *
+***********/
+
+.italic {
+    font-style: italic;
+}
+
+/*********
+* OTHERS *
+*********/
+
+.d-none {
+    display: none;
+}
