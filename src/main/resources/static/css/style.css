@@ -22,6 +22,7 @@ strong {
     font-weight: 700;
 }
 
+
 a, a:hover {
     transition: 0.4s ease-in;
 }
@@ -172,6 +173,16 @@ a:hover {
 
 .product__title {
     color: #000;
+}
+
+.product-page__img {
+    width: 100%;
+}
+
+.product-page__price {
+    font-weight: bold;
+    color: #a1d4a1;
+    font-size: 1.5rem;
 }
 
 .card {
