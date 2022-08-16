@@ -55,10 +55,6 @@ public class UserController {
 
     @PostMapping("/usuario-actualizado")
     public String updateUserInfo(@ModelAttribute User user, Model model) throws UserNotFoundException {
-        System.out.println("user id " + user.getId());
-        System.out.println("user username " + user.getUsername());
-        System.out.println("user apellido " + user.getFirstName());
-        System.out.println("user city " + user.getCity());
         boolean updateUser = userService.update(user);
         if (!updateUser)
             throw new UserNotFoundException("Error al actualizar la información del usuario. Por favor, vuelve a intentarlo.");
@@ -82,7 +78,7 @@ public class UserController {
 
     @ExceptionHandler(UserNotFoundException.class)
     public String handleUserValidationException(HttpServletRequest request, UserNotFoundException exception) {
-        return "product_error";
+        return "error-registro";
     }
 
     @ExceptionHandler

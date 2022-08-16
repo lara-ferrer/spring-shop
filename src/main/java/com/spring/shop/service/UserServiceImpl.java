@@ -27,22 +27,29 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean add(User user) throws UserNotFoundException {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        if (userRepository.findByUsername(user.getUsername()) != null) {
+        var isUsernameRegistered = userRepository.findByUsername(user.getUsername());
+        var isEmailRegistered = userRepository.findByEmail(user.getEmail());
+
+        if (isUsernameRegistered != null) {
             throw new UserNotFoundException("El nombre de usuario ya existe. Por favor escoge otro.");
         }
 
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+        if (isEmailRegistered != null) {
             throw new UserNotFoundException("El email ya existe. Por favor escoge otro.");
         }
 
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setCreationDate(LocalDate.now());
-        user.setActive(true);
-        Role userRole = roleRepository.findByName(Constants.USER_ROLE);
-        user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
-        userRepository.save(user);
+        if (isUsernameRegistered == null || isEmailRegistered == null) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setCreationDate(LocalDate.now());
+            user.setActive(true);
+            Role userRole = roleRepository.findByName(Constants.USER_ROLE);
+            user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
+            userRepository.save(user);
 
-        return true;
+            return true;
+        }
+
+        return false;
     }
 
     @Override
