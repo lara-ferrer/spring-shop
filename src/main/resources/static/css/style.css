@@ -40,11 +40,21 @@ a:hover {
     border-radius: 0;
     color: #fff;
     font-weight: 700;
+    border: none;
 }
 
 .btn:hover {
     background-color: #418541;
     color: #fff;
+}
+
+.form-control:focus {
+    border-color: #a1d4a1;
+    box-shadow: 0 0 0 0.25rem rgb(187 255 179 / 25%);
+}
+
+.form-control::placeholder {
+    color: #abceab;
 }
 
 /********
@@ -180,13 +190,4 @@ a:hover {
 .footer a {
     display: block;
     color: #fff;
-}
-
-
-/*********
-* TRUMPS *
-*********/
-
-.align-center {
-    text-align: center;
 }

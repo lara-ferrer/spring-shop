@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <title>Vegan Foods</title>
 
     <link href="/webjars/bootstrap/5.0.0-beta2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/utils.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,19 +28,17 @@
             </ul>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn__sign-up">Sign-up</button>
+                <a th:href="@{'/registro'}" class="btn btn__sign-up mr--1" sec:authorize="!isAuthenticated()">Registro</a>
+                <a th:href="@{'/login'}" class="btn btn-outline-light" sec:authorize="!isAuthenticated()">Acceso usuarios</a>
             </div>
-            <div class="dropdown text-end">
+            <div class="dropdown text-end" sec:authorize="isAuthenticated()">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="/images/user.svg" alt="Acceso usuarios" />
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" th:href="@{/perfil-usuario}">Ver perfil</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
