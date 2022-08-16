@@ -1,18 +1,24 @@
-<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-
-<main>
-    </br></br>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 mv--5">
-                <div class="alert alert-success" role="alert">
-                    <p class="m--0">Usuario <strong th:text="${user.username}"></strong> registrado correctamente.</p>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+        <title>Registro completado | Vegan Foods</title>
+    </head>
+    <body>
+        <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mv--5">
+                        <div class="alert alert-success" role="alert">
+                            <p class="m--0">Usuario <strong th:text="${user.username}"></strong> registrado correctamente.</p>
+                        </div>
+                        <h1 class="intro__title">Registro completado con éxito</h1>
+                        <p>Ahora puedes acceder desde <a th:href="@{'/login'}">este enlace</a> a tu cuenta de usuario.</p>
+                    </div>
                 </div>
-                <h1 class="intro__title">Registro completado con éxito</h1>
-                <p>Ahora puedes acceder desde <a th:href="@{'/login'}">este enlace</a> a tu cuenta de usuario.</p>
             </div>
-        </div>
-    </div>
-</main>
-
-<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+        </main>
+        <span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    </body>
+</html>
