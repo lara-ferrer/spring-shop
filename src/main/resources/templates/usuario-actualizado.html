@@ -1,14 +1,20 @@
-<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 mv--5">
-            <h1>Información de usuario actualizada correctamente</h1>
-            <p>Ahora puedes volver a tu <a th:href="@{'/perfil-usuario'}">perfil de usuario</a> para ver los cambios realizados.</p>
-        </div>
-    </div>
-    </div>
-</main>
-
-<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+        <title>Usuario actualizado | Vegan Foods</title>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mv--5">
+                    <h1>Información de usuario actualizada correctamente</h1>
+                    <p>Ahora puedes volver a tu <a th:href="@{'/perfil-usuario'}">perfil de usuario</a> para ver los cambios realizados.</p>
+                </div>
+            </div>
+            </div>
+        </main>
+        <span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    </body>
+</html>
