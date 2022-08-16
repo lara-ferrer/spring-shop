@@ -3,22 +3,51 @@
     <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
 
     <main>
-        <div class="container mv--5">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mt--5 mb--1">
                     <h1>Mi perfil</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb--5">
+                    <img src="/images/user-logo.png" alt="Perfil de usuario" class="mb--1"/>
+                    <p><strong>¡Hola, <span th:text="${user.name}"></span>!</strong></p>
+                    <p class="italic">Usuario registrado desde <span th:text="${user.creationDate}"></span></p>
+                </div>
+                <div class="col-lg-8 mb--5">
                     <form method="POST" th:action="@{/usuario-actualizado}">
-                        <label class="labels">ID de usuario</label><input type="text" class="form-control" id="id" th:field="*{user.id}" th:value="${user.id}" disabled>
-                        <label class="labels">Nombre de usuario</label><input type="text" class="form-control" id="username" th:field="*{user.username}" th:value="${user.username}">
-                        <label class="labels">Contraseña</label><input type="password" class="form-control" id="password" th:field="*{user.password}">
-                        <label class="labels">Nombre</label><input type="text" class="form-control" id="name" th:field="*{user.name}" th:value="${user.name}">
-                        <label class="labels">Primer apellido</label><input type="text" class="form-control" id="firstName" th:field="*{user.firstName}" th:value="${user.firstName}">
-                        <label class="labels">Segundo apellido</label><input type="text" class="form-control" id="lastName" th:field="*{user.lastName}" th:value="${user.lastName}">
-                        <label class="labels">Email</label><input type="text" class="form-control" id="email" th:field="*{user.email}" th:value="${user.email}">
-                        <label class="labels">Dirección</label><input type="text" class="form-control" id="address" th:field="*{user.address}" th:value="${user.address}">
-                        <label class="labels">Ciudad</label><input type="text" class="form-control" id="city" th:field="*{user.city}" th:value="${user.city}">
-                        <label class="labels">Fecha de alta</label><input type="text" class="form-control" id="creationDate" th:field="*{user.creationDate}" th:value="${user.creationDate}" disabled>
-                        <label class="labels">Cuenta activa</label><input type="text" class="form-control" id="active" th:field="*{user.active}" th:value="${user.active}" disabled>
+                        <h2>Cambiar mi contraseña</h2>
+                        <input type="text" class="d-none" id="id" th:field="*{user.id}">
+                        <input type="text" class="d-none" id="username" th:field="*{user.username}">
+                        <input type="text" class="d-none" id="email" th:field="*{user.email}">
+                        <input type="text" class="d-none" id="creationDate" th:field="*{user.creationDate}">
+                        <input type="text" class="d-none" id="active" th:field="*{user.active}">
+                        <div class="mv--1">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" id="password" th:field="*{user.password}">
+                        </div>
+                        <h2>Editar mi información de usuario</h2>
+                        <div class="mv--1">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" id="name" th:field="*{user.name}" th:value="${user.name}">
+                        </div>
+                        <div class="mv--1">
+                            <label>Primer apellido</label>
+                            <input type="text" class="form-control" id="firstName" th:field="*{user.firstName}" th:value="${user.firstName}">
+                        </div>
+                        <div class="mv--1">
+                            <label>Segundo apellido</label>
+                            <input type="text" class="form-control" id="lastName" th:field="*{user.lastName}" th:value="${user.lastName}">
+                        </div>
+                        <div class="mv--1">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" id="address" th:field="*{user.address}" th:value="${user.address}">
+                        </div>
+                        <div class="mv--1">
+                            <label>Ciudad</label>
+                            <input type="text" class="form-control" id="city" th:field="*{user.city}" th:value="${user.city}">
+                        </div>
                         <button type="submit" class="btn btn-lg">Actualizar información</button>
                     </form>
                 </div>

@@ -18,6 +18,26 @@ import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private boolean isUsernameRegistered(String username) {
+        var isUsernameRegistered = userRepository.findByUsername(username);
+
+        if (isUsernameRegistered != null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean isEmailRegistered(String email) {
+        var isEmailRegistered = userRepository.findByEmail(email);
+
+        if (isEmailRegistered != null) {
+            return true;
+        }
+
+        return false;
+    }
+
     @Autowired
     private UserRepository userRepository;
 
@@ -27,36 +47,32 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean add(User user) throws UserNotFoundException {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        var isUsernameRegistered = userRepository.findByUsername(user.getUsername());
-        var isEmailRegistered = userRepository.findByEmail(user.getEmail());
+        var isUsernameRegistered = isUsernameRegistered(user.getUsername());
+        var isEmailRegistered = isEmailRegistered(user.getEmail());
 
-        if (isUsernameRegistered != null) {
+        if (isUsernameRegistered) {
             throw new UserNotFoundException("El nombre de usuario ya existe. Por favor escoge otro.");
         }
 
-        if (isEmailRegistered != null) {
+        if (isEmailRegistered) {
             throw new UserNotFoundException("El email ya existe. Por favor escoge otro.");
         }
 
-        if (isUsernameRegistered == null || isEmailRegistered == null) {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setCreationDate(LocalDate.now());
-            user.setActive(true);
-            Role userRole = roleRepository.findByName(Constants.USER_ROLE);
-            user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
-            userRepository.save(user);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setCreationDate(LocalDate.now());
+        user.setActive(true);
+        Role userRole = roleRepository.findByName(Constants.USER_ROLE);
+        user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
+        userRepository.save(user);
 
-            return true;
-        }
+        return true;
 
-        return false;
     }
 
     @Override
     public boolean update(User user) throws UserNotFoundException {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        User newUser = userRepository.findById(user.getId())
-                .orElseThrow(UserNotFoundException::new);
+        User newUser = userRepository.findByEmail(user.getEmail());
         newUser.setUsername(user.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         newUser.setName(user.getName());
