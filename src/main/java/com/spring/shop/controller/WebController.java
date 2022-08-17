@@ -61,7 +61,10 @@ public class WebController {
     @RequestMapping(value = "/productos/{id}")
     public String product(Model model, @PathVariable long id) throws ProductNotFoundException {
         Product product = productService.findProduct(id);
+        long categoryId = product.getCategory().getCategoryId();
+        Category productCategory = categoryService.findByCategoryId(categoryId);
         model.addAttribute("product", product);
+        model.addAttribute("productCategory", productCategory);
         return "product";
     }
 
