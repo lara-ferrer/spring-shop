@@ -1,7 +1,9 @@
 package com.spring.shop.service;
 
+import com.spring.shop.domain.Category;
 import com.spring.shop.domain.Product;
 import com.spring.shop.exception.ProductNotFoundException;
+import com.spring.shop.repository.CategoryRepository;
 import com.spring.shop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public List<Product> findAllProducts() {
@@ -30,8 +35,14 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    /*@Override
-    public void increasePrice(Product product) {
+    @Override
+    public List<Product> findProductsByName(String name) {
+        return productRepository.findByNameContains(name);
+    }
 
-    }*/
+    @Override
+    public List<Product> findProductsByCategory(long categoryId) {
+        Category category = categoryRepository.findByCategoryId(categoryId);
+        return productRepository.findByCategory(category);
+    }
 }

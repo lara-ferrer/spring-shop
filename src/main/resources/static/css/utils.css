@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+.p--0 {
+    padding: 0;
+}
+
 .mv--1 {
     margin: 1rem 0;
 }
@@ -19,6 +23,10 @@
 
 .mt--2 {
     margin: 2rem 0 0 0;
+}
+
+.mt--3 {
+    margin: 3rem 0 0 0;
 }
 
 .mt--5 {
@@ -61,6 +69,14 @@
     margin: 0 0 0 2rem;
 }
 
+.ph--5 {
+    padding: 0 5rem;
+}
+
+.pr--3 {
+    padding: 0 3rem 0 0;
+}
+
 /***********
 * ALIGNMENT *
 ***********/
@@ -83,4 +99,16 @@
 
 .d-none {
     display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.gap--1 {
+    gap: 1rem;
+}
+
+.c--green {
+    color: #a1d4a1;
 }

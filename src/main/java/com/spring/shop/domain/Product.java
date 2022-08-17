@@ -19,14 +19,14 @@ public class Product {
     @Column
     private String description;
     @Column
-    private String category;
-    @Column
     private float price;
     @Column
     private String image;
     @Column(name = "creation_date")
     private LocalDate creationDate;
-
+    @ManyToOne
+    @JoinColumn(name="categoryId", nullable=false)
+    Category category;
     @OneToMany(mappedBy = "product")
     private List<Order> orders;
 }
