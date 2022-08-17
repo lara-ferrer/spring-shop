@@ -1,5 +1,6 @@
 package com.spring.shop.repository;
 
+import com.spring.shop.domain.Category;
 import com.spring.shop.domain.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,5 +11,6 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findAll();
     List<Product> findByNameContains(String name);
+    List<Product> findByCategory(Category category);
     List<Product> findByNameAndPrice(String name, float price);
 }

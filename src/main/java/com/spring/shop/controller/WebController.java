@@ -1,7 +1,9 @@
 package com.spring.shop.controller;
 
+import com.spring.shop.domain.Category;
 import com.spring.shop.domain.Product;
 import com.spring.shop.exception.ProductNotFoundException;
+import com.spring.shop.service.CategoryService;
 import com.spring.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class WebController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/")
     public String index(Model model) {
         List<Product> products = productService.findAllProducts();
@@ -27,14 +32,29 @@ public class WebController {
     @RequestMapping(value = "/tienda")
     public String shop(Model model) {
         List<Product> products = productService.findAllProducts();
+        List<Category> categories = categoryService.findAllCategories();
         model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
         return "tienda";
     }
 
     @RequestMapping(value = "/tienda/search")
     public String findProductsByName(@RequestParam String product, Model model) {
+        List<Category> categories = categoryService.findAllCategories();
         List<Product> products = productService.findProductsByName(product);
         model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
+        return "tienda";
+    }
+
+    @RequestMapping(value = "/tienda/filter")
+    public String findProductsByCategory(@RequestParam long categoryId, Model model) {
+        List<Product> products = productService.findProductsByCategory(categoryId);
+        List<Category> categories = categoryService.findAllCategories();
+        Category filteredCategory = categoryService.findByCategoryId(categoryId);
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
+        model.addAttribute("filteredCategory", filteredCategory);
         return "tienda";
     }
 

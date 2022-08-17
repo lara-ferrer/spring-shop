@@ -10,4 +10,5 @@ public interface ProductService {
     List<Product> findAllProducts(String category);
     Product findProduct(long id) throws ProductNotFoundException;
     List<Product> findProductsByName(String name);
+    List<Product> findProductsByCategory(long categoryId);
 }

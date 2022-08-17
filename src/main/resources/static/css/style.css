@@ -165,10 +165,25 @@ a:hover {
     margin: 2em 0 4em 0;
 }
 
+.shop__header {
+    background-image: url('/images/catalog.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10em 5rem;
+    color: #fff;
+}
+
 .shop__search {
     display: flex;
     justify-content: space-between;
     margin-right: 0.5rem;
+}
+
+.shop__filter__radio {
+    display: flex;
+    gap: 0.5rem;
+    color: #808080;
 }
 
 .shop__clean-filters {
