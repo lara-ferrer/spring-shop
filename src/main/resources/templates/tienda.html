@@ -49,11 +49,15 @@
                                 <div class="card shadow-sm">
                                     <a th:href="@{'productos/' + ${product.id}}" class="align-center"><img th:src="${product.image}" th:alt="${product.name}" class="product__img" /></a>
                                     <div class="card-body">
-                                        <h3 th:text="${product.name}"></h3>
-                                        <p class="card-text" th:text="${product.description}"></p>
+                                        <div>
+                                            <a th:href="@{'/productos/' + ${product.id}}" class="product__title">
+                                                <h3 th:text="${product.name}"></h3>
+                                            </a>
+                                            <p class="card-text" th:text="${product.description}"></p>
+                                        </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <a th:href="@{'productos/' + ${product.id}}" class="btn btn-sm btn-outline-secondary">Ver producto</a>
+                                                <a th:href="@{'/productos/' + ${product.id}}" class="btn">Ver producto</a>
                                             </div>
                                         </div>
                                     </div>
