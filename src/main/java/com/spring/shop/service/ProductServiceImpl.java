@@ -30,8 +30,8 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    /*@Override
-    public void increasePrice(Product product) {
-
-    }*/
+    @Override
+    public List<Product> findProductsByName(String name) {
+        return productRepository.findByNameContains(name);
+    }
 }

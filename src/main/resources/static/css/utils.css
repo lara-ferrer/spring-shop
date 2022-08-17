@@ -84,3 +84,11 @@
 .d-none {
     display: none;
 }
+
+.d-flex {
+    display: flex;
+}
+
+.gap--1 {
+    gap: 1rem;
+}

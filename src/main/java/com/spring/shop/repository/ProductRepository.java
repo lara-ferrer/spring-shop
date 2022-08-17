@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findAll();
-    Product findByName(String name);
+    List<Product> findByNameContains(String name);
     List<Product> findByNameAndPrice(String name, float price);
 }

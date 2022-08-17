@@ -165,6 +165,21 @@ a:hover {
     margin: 2em 0 4em 0;
 }
 
+.shop__search {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0.5rem;
+}
+
+.shop__clean-filters {
+    text-transform: uppercase;
+    font-weight: 500;
+    height: fit-content;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    align-self: center;
+}
+
 .product__img {
     width: 70%;
     height: 400px;
