@@ -22,6 +22,7 @@ strong {
     font-weight: 700;
 }
 
+
 a, a:hover {
     transition: 0.4s ease-in;
 }
@@ -164,6 +165,36 @@ a:hover {
     margin: 2em 0 4em 0;
 }
 
+.shop__header {
+    background-image: url('/images/catalog.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10em 5rem;
+    color: #fff;
+}
+
+.shop__search {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0.5rem;
+}
+
+.shop__filter__radio {
+    display: flex;
+    gap: 0.5rem;
+    color: #808080;
+}
+
+.shop__clean-filters {
+    text-transform: uppercase;
+    font-weight: 500;
+    height: fit-content;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    align-self: center;
+}
+
 .product__img {
     width: 70%;
     height: 400px;
@@ -174,9 +205,27 @@ a:hover {
     color: #000;
 }
 
+.product-page__img {
+    width: 100%;
+}
+
+.product-page__price {
+    font-weight: bold;
+    color: #a1d4a1;
+    font-size: 1.5rem;
+}
+
 .card {
     border-radius: 0;
     height: 600px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /*********
