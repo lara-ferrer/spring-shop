@@ -1,0 +1,11 @@
+.checkout__table {
+    border: 1px solid grey;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.checkout__table__img {
+    width: 15%;
+}

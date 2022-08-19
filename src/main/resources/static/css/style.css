@@ -215,6 +215,10 @@ a:hover {
     font-size: 1.5rem;
 }
 
+input#quantity {
+    width: 10%!important;
+    text-align: right!important;
+}
 .card {
     border-radius: 0;
     height: 600px;

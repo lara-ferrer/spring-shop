@@ -112,3 +112,7 @@
 .c--green {
     color: #a1d4a1;
 }
+
+.as-center {
+    align-self: center;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    <link href="/css/checkout.css" rel="stylesheet">
+    <title>Checkout | Vegan Foods</title>
+</head>
+<body>
+<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+<main>
+    <div class="container">
+        <div class="row mt--5">
+            <div class="col-lg-12">
+                <h1>Checkout</h1>
+            </div>
+        </div>
+        <div class="row mb--5">
+            <div class="col-lg-6">
+                <h3>Datos del pedido</h3>
+                <div class="checkout__table">
+                    <img th:src="${product.image}" th:alt="${product.name}" class="checkout__table__img" />
+                    <span class="as-center" th:text="${product.name}"></span>
+                    <span class="as-center" id="price" th:text="${product.price}"></span>
+                    <span class="as-center" id="quantity" th:text="${quantity}"></span>
+                </div>
+                <p>Total del pedido:</p><span id="totalPrice"></span>
+            </div>
+            <div class="col-lg-6">
+                <form class="mt--2" action="#" method="post">
+                    <div class="mv--1">
+                        <label for="address" class="form-label">Dirección de envío</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Escribe aquí la dirección..." />
+                    </div>
+                    <div class="mv--1">
+                        <input type="checkbox" id="expressShipping" name="expressShipping" class="form-control">¿Solicitar envío express?</inpuy>
+                    </div>
+                    <button type="submit" class="btn btn-lg mt--1">Completar pedido</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+<script type="text/javascript" th:src="@{/js/checkout.js}"></script>
+</body>
+</html>

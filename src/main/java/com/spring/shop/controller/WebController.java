@@ -2,6 +2,7 @@ package com.spring.shop.controller;
 
 import com.spring.shop.domain.Category;
 import com.spring.shop.domain.Product;
+import com.spring.shop.dto.CheckoutDTO;
 import com.spring.shop.exception.ProductNotFoundException;
 import com.spring.shop.service.CategoryService;
 import com.spring.shop.service.ProductService;
@@ -71,6 +72,14 @@ public class WebController {
         model.addAttribute("productCategory", productCategory);
         model.addAttribute("relatedProducts", relatedProducts);
         return "product";
+    }
+
+    @PostMapping("/checkout")
+    public String checkout(@ModelAttribute CheckoutDTO checkoutDTO, Model model) throws ProductNotFoundException {
+        Product product = productService.findProduct(checkoutDTO.getProductId());
+        model.addAttribute("product", product);
+        model.addAttribute("quantity", checkoutDTO.getQuantity());
+        return "checkout";
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
