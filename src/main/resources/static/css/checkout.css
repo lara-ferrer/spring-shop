@@ -1,9 +1,10 @@
 .checkout__table {
-    border: 1px solid grey;
+    border: 1px solid #ced4da;
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    border-radius: 0.25rem;
 }
 
 .checkout__table__img {
