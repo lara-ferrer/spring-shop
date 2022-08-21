@@ -2,7 +2,6 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-    <link href="/css/checkout.css" rel="stylesheet">
     <title>Checkout | Vegan Foods</title>
 </head>
 <body>
@@ -17,8 +16,8 @@
         <div class="row mb--5">
             <div class="col-lg-6">
                 <h3>Datos del pedido</h3>
-                <div class="checkout__table mv--2">
-                    <img th:src="${product.image}" th:alt="${product.name}" class="checkout__table__img" />
+                <div class="order__table mv--2">
+                    <img th:src="${product.image}" th:alt="${product.name}" class="order__table__img" />
                     <a th:href="@{'/productos/' + ${product.id}}" class="as-center"><span th:text="${product.name}"></span></a>
                     <span class="as-center" th:text="${product.price} + '€'"></span>
                     <span class="as-center" th:text="${quantity}"></span>

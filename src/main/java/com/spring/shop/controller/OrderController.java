@@ -1,5 +1,7 @@
 package com.spring.shop.controller;
 
+import com.spring.shop.domain.Category;
+import com.spring.shop.domain.Order;
 import com.spring.shop.domain.Product;
 import com.spring.shop.domain.User;
 import com.spring.shop.dto.OrderDTO;
@@ -11,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.shop.service.OrderService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class OrderController {
@@ -43,5 +48,15 @@ public class OrderController {
             throw new NewOrderException("Error al registrar el pedido.");
 
         return "pedido-completado";
+    }
+
+    @RequestMapping(value = "/pedidos/{id}")
+    public String product(Model model, @PathVariable long id) throws ProductNotFoundException {
+        Order order = orderService.findOrder(id);
+        Product product = order.getProduct();
+
+        model.addAttribute("order", order);
+        model.addAttribute("product", product);
+        return "order";
     }
 }

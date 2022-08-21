@@ -1,4 +1,4 @@
-.checkout__table {
+.order__table {
     border: 1px solid #ced4da;
     padding: 2rem;
     display: flex;
@@ -7,6 +7,6 @@
     border-radius: 0.25rem;
 }
 
-.checkout__table__img {
+.order__table__img {
     width: 15%;
 }
