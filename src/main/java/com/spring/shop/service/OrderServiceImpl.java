@@ -35,7 +35,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findOrders(User user) {
-        // Listar los productos de un usuario determinado
         return orderRepository.findByUser(user);
     }
 }

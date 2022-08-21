@@ -1,18 +1,15 @@
 package com.spring.shop.controller;
 
-import com.spring.shop.domain.Order;
 import com.spring.shop.domain.Product;
 import com.spring.shop.domain.User;
 import com.spring.shop.dto.OrderDTO;
 import com.spring.shop.exception.NewOrderException;
 import com.spring.shop.exception.ProductNotFoundException;
-import com.spring.shop.repository.UserRepository;
 import com.spring.shop.service.ProductService;
 import com.spring.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.shop.service.OrderService;
@@ -45,7 +42,6 @@ public class OrderController {
         if (!orderAdded)
             throw new NewOrderException("Error al registrar el pedido.");
 
-        model.addAttribute("order", order);
         return "pedido-completado";
     }
 }

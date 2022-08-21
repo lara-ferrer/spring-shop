@@ -18,7 +18,7 @@
                         <p th:text="${product.price} + '€'" class="product-page__price"></p>
                         <h3>Descripción del producto</h3>
                         <p th:text="${product.description}"></p>
-                        <form class="d-flex gap--1" th:action="@{/checkout}" method="post">
+                        <form class="d-flex gap--1" th:action="@{/checkout}" method="post" sec:authorize="isAuthenticated()">
                             <input class="d-none" type="number" id="productId" name="productId" th:value="*{product.id}" />
                             <input class="form-control" type="number" id="quantity" name="quantity" value="1" min="1" />
                             <button type="submit" class="btn"><i class="mr--1 bi bi-cart-check"></i>Comprar</button>
