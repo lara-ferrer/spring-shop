@@ -3,7 +3,7 @@
 <head>
     <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
     <link href="/css/checkout.css" rel="stylesheet">
-    <title>Pedido completado | Vegan Foods</title>
+    <title th:text="'Detalles del pedido #' + ${order.orderId} + ' | Vegan Foods'"></title>
 </head>
 <body>
 <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -13,7 +13,10 @@
             <div class="col-lg-12">
                 <div class="d-flex gap--1 mb--2">
                     <h1 th:text="'Pedido #' + ${order.orderId}" class="m--0"></h1>
-                    <a class="btn btn-danger as-center shop__clean-filters" th:href="@{'/tienda'}">x Cancelar pedido</a>
+                    <form th:action="@{/cancelar-pedido}" method="post" class="as-center">
+                        <input class="d-none" type="number" id="id" name="id" th:value="${order.orderId}" />
+                        <button class="btn btn-danger shop__clean-filters" type="submit">x Cancelar pedido</button>
+                    </form>
                 </div>
                 <p>Fecha: <span th:text="${order.date}"></span></p>
                 <h3>Datos del pedido</h3>

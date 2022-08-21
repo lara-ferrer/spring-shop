@@ -11,4 +11,5 @@ public interface OrderService {
     boolean addOrder(int quantity, String shippingAddress, boolean expressShipping, Product product, User user) throws NewOrderException;
     List<Order> findOrders(User user);
     Order findOrder(long orderId);
+    boolean removeOrder(long orderId);
 }

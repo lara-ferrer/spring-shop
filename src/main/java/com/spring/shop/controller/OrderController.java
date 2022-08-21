@@ -12,11 +12,8 @@ import com.spring.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import com.spring.shop.service.OrderService;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -33,7 +30,7 @@ public class OrderController {
     private ProductService productService;
 
     @PostMapping("/order")
-    public String order(@ModelAttribute OrderDTO orderDTO, Model model, HttpServletRequest request) throws NewOrderException, ProductNotFoundException {
+    public String order(@ModelAttribute OrderDTO orderDTO, HttpServletRequest request) throws NewOrderException, ProductNotFoundException {
         int quantity = orderDTO.getQuantity();
         String shippingAddress = orderDTO.getShippingAddress();
         boolean expressShipping = orderDTO.isExpressShipping();
@@ -58,5 +55,14 @@ public class OrderController {
         model.addAttribute("order", order);
         model.addAttribute("product", product);
         return "order";
+    }
+
+    @RequestMapping(value = "/cancelar-pedido")
+    public String removeOrder(@ModelAttribute long id) throws NewOrderException {
+        boolean orderRemoved = orderService.removeOrder(id);
+        if (!orderRemoved)
+            throw new NewOrderException("Error al eliminar el pedido.");
+
+        return "pedido-cancelado";
     }
 }

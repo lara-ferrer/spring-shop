@@ -42,4 +42,12 @@ public class OrderServiceImpl implements OrderService {
     public Order findOrder(long orderId) {
         return orderRepository.findByOrderId(orderId);
     }
+
+    @Override
+    public boolean removeOrder(long orderId) {
+        Order order = orderRepository.findByOrderId(orderId);
+        orderRepository.delete(order);
+
+        return true;
+    }
 }

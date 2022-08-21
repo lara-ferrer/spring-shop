@@ -45,13 +45,11 @@ a:hover {
 }
 
 .btn-danger {
-    color: #fff;
-    background-color: #dc3545;
+    background-color: #dc3545!important;
 }
 
 .btn-danger:hover {
-    color: #fff;
-    background-color: #dd4d5b;
+    background-color: #dd4d5b!important;
 }
 
 .btn:hover {
