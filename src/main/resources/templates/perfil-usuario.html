@@ -56,10 +56,13 @@
                     <div class="col-lg-8 mb--5">
                         <h2>Mis pedidos</h2>
                         <div class="order__table mv--2">
-                            <div th:each="order : ${orders}">
+                            <div th:if="${orders.size() > 0}" th:each="order : ${orders}">
                                 <span class="as-center" th:text="'Pedido #' + ${order.orderId}"></span>
                                 <span class="as-center" th:text="${order.date}"></span>
                                 <a th:href="@{'/pedidos/' + ${order.orderId}}">Ver detalles</a>
+                            </div>
+                            <div th:if="${orders.size() == 0}">
+                                <p class="m--0">No existen pedidos realizados.</p>
                             </div>
                         </div>
                     </div>
