@@ -1,9 +1,11 @@
 package com.spring.shop.controller;
 
+import com.spring.shop.domain.Order;
 import com.spring.shop.domain.User;
 import com.spring.shop.exception.ProductNotFoundException;
 import com.spring.shop.exception.UserNotFoundException;
 import com.spring.shop.exception.UserRegistrationException;
+import com.spring.shop.service.OrderService;
 import com.spring.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -22,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -36,9 +42,12 @@ public class UserController {
 
     @GetMapping("/perfil-usuario")
     public String profile(Model model, HttpServletRequest request) {
-        String remoteUsername = request.getRemoteUser();
-        User remoteUser = userService.findByUsername(remoteUsername);
-        model.addAttribute("user", remoteUser);
+        String username = request.getRemoteUser();
+        User user = userService.findByUsername(username);
+        List<Order> orders = orderService.findOrders(user);
+
+        model.addAttribute("user", user);
+        model.addAttribute("orders", orders);
         return "perfil-usuario";
     }
 

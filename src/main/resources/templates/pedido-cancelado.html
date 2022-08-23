@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    <link href="/css/checkout.css" rel="stylesheet">
+    <title>Pedido cancelado | Vegan Foods</title>
+</head>
+<body>
+<span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+<main>
+    <div class="container">
+        <div class="row mv--5">
+            <div class="col-lg-12">
+                <h1>Pedido cancelado</h1>
+                <p>Dirígete a la <strong><a th:href="@{'/tienda'}">tienda on-line</a></strong> si deseas hacer un nuevo pedido.</p>
+            </div>
+        </div>
+    </div>
+</main>
+<span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+</body>
+</html>
