@@ -1,9 +1,9 @@
 package com.spring.shop.controller;
 
-import com.spring.shop.domain.Category;
 import com.spring.shop.domain.Order;
 import com.spring.shop.domain.Product;
 import com.spring.shop.domain.User;
+import com.spring.shop.dto.CancelOrderDTO;
 import com.spring.shop.dto.OrderDTO;
 import com.spring.shop.exception.NewOrderException;
 import com.spring.shop.exception.ProductNotFoundException;
@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import com.spring.shop.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import java.time.LocalDate;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Controller
 public class OrderController {
@@ -52,14 +54,22 @@ public class OrderController {
         Order order = orderService.findOrder(id);
         Product product = order.getProduct();
 
+        LocalDate today = LocalDate.now();
+        boolean hasDeadlineExpired = false;
+
+        if (DAYS.between(today, order.getDate()) > 0) {
+            hasDeadlineExpired = true;
+        }
+
         model.addAttribute("order", order);
         model.addAttribute("product", product);
+        model.addAttribute("hasDeadlineExpired", hasDeadlineExpired);
         return "order";
     }
 
-    @RequestMapping(value = "/cancelar-pedido")
-    public String removeOrder(@ModelAttribute long id) throws NewOrderException {
-        boolean orderRemoved = orderService.removeOrder(id);
+    @PostMapping(value = "/cancelar-pedido")
+    public String removeOrder(@ModelAttribute CancelOrderDTO cancelOrderDTO) throws NewOrderException {
+        boolean orderRemoved = orderService.removeOrder(cancelOrderDTO.getOrderId());
         if (!orderRemoved)
             throw new NewOrderException("Error al eliminar el pedido.");
 

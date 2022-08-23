@@ -5,7 +5,6 @@ import com.spring.shop.domain.Product;
 import com.spring.shop.domain.User;
 import com.spring.shop.exception.NewOrderException;
 import com.spring.shop.repository.OrderRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
