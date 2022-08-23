@@ -77,8 +77,14 @@ public class WebController {
     @PostMapping("/checkout")
     public String checkout(@ModelAttribute CheckoutDTO checkoutDTO, Model model) throws ProductNotFoundException {
         Product product = productService.findProduct(checkoutDTO.getProductId());
+
+        double productPrice = product.getPrice();
+        int quantity = checkoutDTO.getQuantity();
+        String totalPrice = String.format("%.2f", productPrice * quantity);
+
         model.addAttribute("product", product);
         model.addAttribute("quantity", checkoutDTO.getQuantity());
+        model.addAttribute("totalPrice", totalPrice);
         return "checkout";
     }
 

@@ -23,7 +23,7 @@
                     <span class="as-center" th:text="${quantity}"></span>
                 </div>
                 <div class="d-flex">
-                    <h4>Total del pedido: <span class="c--green" th:text="${product.price * quantity} + '€'"></span></h4>
+                    <h4>Total del pedido: <span class="c--green" th:text="${totalPrice} + '€'"></span></h4>
                 </div>
             </div>
             <div class="col-lg-6">
