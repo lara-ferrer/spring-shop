@@ -22,11 +22,11 @@ public class Product {
     private float price;
     @Column
     private String image;
-    @Column(name = "creation_date")
+    @Column(name="creation_date")
     private LocalDate creationDate;
     @ManyToOne
     @JoinColumn(name="categoryId", nullable=false)
     Category category;
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy="product")
     private List<Order> orders;
 }

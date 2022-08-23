@@ -37,8 +37,20 @@
     margin: 0 0 1rem 0;
 }
 
+.mb--2 {
+    margin: 0 0 2rem 0;
+}
+
 .mb--5 {
     margin: 0 0 5rem 0;
+}
+
+.mv--1 {
+    margin: 1rem 0;
+}
+
+.mv--2 {
+    margin: 2rem 0;
 }
 
 .mv--3 {
@@ -111,4 +123,8 @@
 
 .c--green {
     color: #a1d4a1;
+}
+
+.as-center {
+    align-self: center;
 }
