@@ -128,3 +128,7 @@
 .as-center {
     align-self: center;
 }
+
+.text-center {
+    text-align: center;
+}
