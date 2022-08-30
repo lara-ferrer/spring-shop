@@ -120,6 +120,9 @@
 .gap--1 {
     gap: 1rem;
 }
+.gap--05 {
+    gap: 0.5rem;
+}
 
 .c--green {
     color: #a1d4a1;

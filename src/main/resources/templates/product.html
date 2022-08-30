@@ -23,7 +23,7 @@
                             <input class="form-control" type="number" id="quantity" name="quantity" value="1" min="1" />
                             <button type="submit" class="btn"><i class="mr--1 bi bi-cart-check"></i> <span th:text="#{product.buy}"></span></button>
                         </form>
-                        <a th:href="@{'/login'}" class="btn" sec:authorize="!isAuthenticated()"><i class="mr--1 bi bi-cart-check"></i><span th:text="#{product.description}"></span></a>
+                        <a th:href="@{'/login'}" class="btn" sec:authorize="!isAuthenticated()"><i class="mr--1 bi bi-cart-check"></i><span th:text="#{product.login}"></span></a>
                     </div>
                 </div>
                 <div class="row mb--5">

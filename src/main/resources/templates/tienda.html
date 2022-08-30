@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Tienda | Vegan Foods</title>
+        <title th:text="#{shop.meta-title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -10,38 +10,38 @@
             <div class="container-fluid shop">
                 <div class="row">
                     <div class="col-lg-3 mt--5 ph--5">
-                        <h3>Buscador</h3>
+                        <h3 th:text="#{shop.searcher}"></h3>
                         <form class="d-flex gap--1" method="GET" action="/tienda/search">
-                            <input class="form-control" name="product" id="product" type="search" placeholder="Buscar en la tienda..." aria-label="Search">
-                            <button class="btn" type="submit">Buscar</button>
+                            <input class="form-control" name="product" id="product" type="search" th:placeholder="#{shop.search-placeholder}" aria-label="Search">
+                            <button class="btn" type="submit" th:text="#{shop.searcher}"></button>
                         </form>
-                        <h3 class="mt--2">Filtrar por categoría</h3>
+                        <h3 class="mt--2" th:text="#{shop.category-filter}" th:text="#{shop.category-filter}"></h3>
                         <form method="get" action="/tienda/filter">
                             <div class="shop__filter__radio" th:each="category : ${categories}">
                                 <input type="radio" id="categoryId" name="categoryId" th:value="${category.categoryId}" th:text="${category.name}">
                             </div>
-                            <button class="btn mt--1" type="submit">Filtrar</button>
+                            <button class="btn mt--1" type="submit" th:text="#{shop.filter}"></button>
                         </form>
                     </div>
                     <div class="col-lg-9">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="shop__header">
-                                    <h1>Catálogo on-line</h1>
-                                    <p>Descubre nuestro amplio catálogo de productos veganos.</p>
+                                    <h1 th:text="#{shop.title}"></h1>
+                                    <p th:text="#{shop.subtitle}"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt--3" th:if="${param.product}">
                             <div class="col-lg-12 d-flex gap--1">
-                                <h2 class="c--green m--0">Resultados de la búsqueda</h2>
-                                <a class="btn shop__clean-filters" th:href="@{'/tienda'}">x Limpiar filtros</a>
+                                <h2 class="c--green m--0" th:text="#{shop.search-result}"></h2>
+                                <a class="btn shop__clean-filters" th:href="@{'/tienda'}" th:text="#{shop.clean-filters}"></a>
                             </div>
                         </div>
                         <div class="row mt--3" th:if="${param.categoryId}">
                             <div class="col-lg-12 d-flex gap--1">
-                                <h2 class="c--green m--0" th:text="'Productos en la categoría ' + ${filteredCategory.name}"></h2>
-                                <a class="btn shop__clean-filters" th:href="@{'/tienda'}">x Limpiar filtros</a>
+                                <h2 class="c--green m--0" th:text="#{shop.product-category} + ' ' + ${filteredCategory.name}"></h2>
+                                <a class="btn shop__clean-filters" th:href="@{'/tienda'}" th:text="#{shop.clean-filters}"></a>
                             </div>
                         </div>
                         <div class="row mv--4 pr--3">
@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <a th:href="@{'/productos/' + ${product.id}}" class="btn">Ver producto</a>
+                                                <a th:href="@{'/productos/' + ${product.id}}" class="btn" th:text="#{product.view-product}"></a>
                                             </div>
                                         </div>
                                     </div>

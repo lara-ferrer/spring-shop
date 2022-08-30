@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Producto no disponible | Vegan Foods</title>
+        <title th:text="#{error-product.title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -10,8 +10,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 mv--5">
-                        <h1>Producto no encontrado</h1>
-                        <p>El producto que has solicitado no está disponible. Por favor vuelve al <a href="/">inicio</a>.</a></p>
+                        <h1 th:text="#{error-product.title}"></h1>
+                        <p><span th:text="#{error-product.subtitle}"></span><a href="/" th:text="#{error-product.link}">inicio</a>.</a></p>
                     </div>
                 </div>
             </div>

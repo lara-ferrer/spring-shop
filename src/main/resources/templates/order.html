@@ -19,7 +19,10 @@
                         <button class="btn btn-danger shop__clean-filters" type="submit" th:text="#{order.cancel}"></button>
                     </form>
                 </div>
-                <p th:text="#{order.cancel}"> <span th:text="${order.date}"></span></p>
+                <div class="d-flex gap--05">
+                    <p th:text="#{order.date}"></p>
+                    <p th:text="${order.date}"></p>
+                </div>
                 <h3 th:text="#{order.data}"></h3>
                 <div class="order__table mv--2">
                     <img th:src="${product.image}" th:alt="${product.name}" class="order__table__img" />
@@ -29,12 +32,16 @@
                 </div>
                 <h3 class="mt--3" th:text="#{order.shipping-data}"></h3>
                 <div class="mt--2">
-                    <p th:text="#{order.shipping-data}"> <span th:text="${order.shippingAddress}"></span></p>
+                    <div class="d-flex gap--05">
+                        <p th:text="#{order.address}"></p>
+                        <p th:text="${order.shippingAddress}"></p>
+                    </div>
+                    <div class="d-flex gap--05">
+                        <p th:text="#{order.express-shipping}"></p>
+                        <p th:if="${order.expressShipping}" th:text="#{order.yes}"></p>
+                        <p th:if="${!order.expressShipping}" th:text="#{order.no}"></p>
+                    </div>
 
-                    <p th:text="#{order.express-shipping}">
-                        <span th:if="${order.expressShipping}" th:text="${order.yes}"></span>
-                        <span th:if="${!order.expressShipping}" th:text="${order.no}"></span>
-                    </p>
                 </div>
             </div>
         </div>
