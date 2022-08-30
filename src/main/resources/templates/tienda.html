@@ -15,7 +15,7 @@
                             <input class="form-control" name="product" id="product" type="search" th:placeholder="#{shop.search-placeholder}" aria-label="Search">
                             <button class="btn" type="submit" th:text="#{shop.searcher}"></button>
                         </form>
-                        <h3 class="mt--2" th:text="#{shop.category-filter}" th:text="#{shop.category-filter}"></h3>
+                        <h3 class="mt--2" th:text="#{shop.category-filter}"></h3>
                         <form method="get" action="/tienda/filter">
                             <div class="shop__filter__radio" th:each="category : ${categories}">
                                 <input type="radio" id="categoryId" name="categoryId" th:value="${category.categoryId}" th:text="${category.name}">
