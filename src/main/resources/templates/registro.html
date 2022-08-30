@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Registro | Vegan Foods</title>
+        <title th:text="#{register.meta-title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -10,42 +10,42 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 mv--5">
-                        <h1>Registro en VeganFoods</h1>
-                        <p>Regístrate ahora y recibe exclusivas novedades y ofertas especiales disponibles solo para nuestros usuarios.</p>
+                        <h1 th:text="#{register.title}"></h1>
+                        <p th:text="#{register.subtitle}"></p>
                         <form class="mt--2" th:action="@{/registro-completado}" method="post" th:object="${user}">
                             <div class="mv--1">
-                                <label for="username" class="form-label">Nombre de usuario</label>
-                                <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Nombre de usuario" />
+                                <label for="username" class="form-label" th:text="#{common.username}"></label>
+                                <input type="text" id="username" th:field="*{username}" class="form-control" th:placeholder="#{common.username}" />
                             </div>
                             <div class="mv--1">
-                                <label for="email" class="form-label">E-mail</label>
-                                <input type="text" id="email" th:field="*{email}" class="form-control" placeholder="E-mail" />
+                                <label for="email" class="form-label" th:text="#{common.email}"></label>
+                                <input type="text" id="email" th:field="*{email}" class="form-control" th:placeholder="#{common.email}" />
                             </div>
                             <div class="mv--1">
-                                <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Contraseña" />
+                                <label for="password" class="form-label" th:text="#{common.password}"></label>
+                                <input type="password" id="password" th:field="*{password}" class="form-control" th:placeholder="#{common.email}" />
                             </div>
                             <div class="mv--1">
-                                <label for="name" class="form-label">Nombre</label>
-                                <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Nombre" />
+                                <label for="name" class="form-label" th:text="#{common.name}"></label>
+                                <input type="text" id="name" th:field="*{name}" class="form-control" th:placeholder="#{common.name}" />
                             </div>
                             <div class="mv--1">
-                                <label for="first_name" class="form-label">Primer apellido</label>
-                                <input type="text" id="first_name" th:field="*{firstName}" class="form-control" placeholder="Primer apellido" />
+                                <label for="first_name" class="form-label" th:text="#{common.first-name}"></label>
+                                <input type="text" id="first_name" th:field="*{firstName}" class="form-control" th:placeholder="#{common.first-name}" />
                             </div>
                             <div class="mv--1">
-                                <label for="first_name" class="form-label">Segundo apellido</label>
-                                <input type="text" id="last_name" th:field="*{lastName}" class="form-control" placeholder="Segundo apellido" />
+                                <label for="first_name" class="form-label" th:text="#{common.last-name}"></label>
+                                <input type="text" id="last_name" th:field="*{lastName}" class="form-control"  th:placeholder="#{common.last-name}" />
                             </div>
                             <div class="mv--1">
-                                <label for="address" class="form-label">Dirección</label>
-                                <input type="text" id="address" th:field="*{address}" class="form-control" placeholder="Dirección" />
+                                <label for="address" class="form-label" th:text="#{common.address}"></label>
+                                <input type="text" id="address" th:field="*{address}" class="form-control" th:placeholder="#{common.address}" />
                             </div>
                             <div class="mv--1">
-                                <label for="city" class="form-label">Ciudad</label>
-                                <input type="text" id="city" th:field="*{city}" class="form-control" placeholder="Ciudad" />
+                                <label for="city" class="form-label" th:text="#{common.city}"></label>
+                                <input type="text" id="city" th:field="*{city}" class="form-control" th:placeholder="#{common.city}" />
                             </div>
-                            <button type="submit" class="btn btn-lg mt--1">Darme de alta</button>
+                            <button type="submit" class="btn btn-lg mt--1" th:text="#{register.cta}"></button>
                         </form>
                     </div>
                 </div>

@@ -2,13 +2,13 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Logout realizado con éxito | Vegan Foods</title>
+        <title th:text="#{logout.title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
         <main>
-            <h1>Logout realizado con éxito.</h1>
-            <a th:href="@{'/'}" class="btn">Volver al inicio</a>
+            <h1 th:text="#{logout.title}"></h1>
+            <a th:href="@{'/'}" class="btn" th:text="#{common.button-back}"></a>
         </main>
         <span th:replace="fragments/footer.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
     </body>

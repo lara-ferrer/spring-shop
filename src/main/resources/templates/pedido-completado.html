@@ -3,7 +3,7 @@
 <head>
     <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
     <link href="/css/checkout.css" rel="stylesheet">
-    <title>Pedido completado | Vegan Foods</title>
+    <title th:text="#{order-completed.title} + ' | Vegan Foods'"></title>
 </head>
 <body>
 <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row mv--5">
             <div class="col-lg-12">
-                <h1>Pedido completado</h1>
-                <p><strong>¡Muchas gracias por tu compra!</strong> Lo enviaremos a la mayor brevedad posible.</p>
-                <p>Si deseas <strong>cancelar</strong> tu pedido tienes un <strong>máximo de 24 horas</strong> para hacerlo.</p>
-                <p>También puedes acceder a tu <strong><a th:href="@{'/perfil-usuario'}">perfil de usuario</a></strong> para ver un histórico de todos los pedidos realizados.</p>
+                <h1 th:text="#{order-completed.title}"></h1>
+                <p><strong><span th:text="#{order-completed.thanks}"></span></strong> <span th:text="#{order-completed.first-text}"></span></p>
+                <p><span th:text="#{order-completed.second-text}"></span> <strong><span th:text="#{order-completed.highlighted-text}"></span></strong> <span th:text="#{order-completed.third-text}"></span></p>
+                <p><span th:text="#{order-completed.fourth-text}"></span> <strong><a th:href="@{'/perfil-usuario'}" th:text="#{order-completed.cta-text}"></a></strong> <span th:text="#{order-completed.fifth-text}"></span></p>
             </div>
         </div>
     </div>
