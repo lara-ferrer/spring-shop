@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  spring:
+    build: .
+    image: spring-shop
+    container_name: api
+    ports:
+      - "8082:8080"
+    environment:
+      spring.profiles.active: default
+    depends_on:
+      - db
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8084:8080
+  db:
+    container_name: db
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    ports:
+      - 1435:1433
+    volumes:
+      - data:/var/lib/mssqlql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Aaservidor1234*
+      - MSSQL_PID=Developer
+      - MSSQL_USER=SA
+      - MSSQL_TCP_PORT=1433
+volumes:
+  data: {}

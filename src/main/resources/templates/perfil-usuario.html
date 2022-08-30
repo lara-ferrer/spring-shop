@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Mi perfil | Vegan Foods</title>
+        <title th:text="#{profile.title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -10,59 +10,59 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 mt--5">
-                        <h1>Mi perfil</h1>
+                        <h1 th:text="#{profile.title}"></h1>
                     </div>
                 </div>
                 <div class="row mt--1">
                     <div class="col-lg-4 mb--5">
-                        <img src="/images/user-logo.png" alt="Perfil de usuario" class="mb--1"/>
-                        <p><strong>¡Hola, <span th:text="${user.name}"></span>!</strong></p>
-                        <p class="italic">Usuario registrado desde <span th:text="${user.creationDate}"></span></p>
+                        <img src="/images/user-logo.png" th:alt="#{profile.title}" class="mb--1"/>
+                        <p><strong>¡<span th:text="#{profile.greeting}"></span>, <span th:text="${user.name}"></span>!</strong></p>
+                        <p class="italic"><span th:text="#{profile.register-date}"></span> <span th:text="${user.creationDate}"></span></p>
                         <form method="POST" th:action="@{/usuario-actualizado}">
-                            <h2>Cambiar mi contraseña</h2>
+                            <h2 th:text="#{profile.change-password}"></h2>
                             <input type="text" class="d-none" id="id" th:field="*{user.id}">
                             <input type="text" class="d-none" id="username" th:field="*{user.username}">
                             <input type="text" class="d-none" id="email" th:field="*{user.email}">
                             <input type="text" class="d-none" id="creationDate" th:field="*{user.creationDate}">
                             <input type="text" class="d-none" id="active" th:field="*{user.active}">
                             <div class="mv--1">
-                                <label>Contraseña</label>
+                                <label th:text="#{common.password}"></label>
                                 <input type="password" class="form-control" id="password" th:field="*{user.password}">
                             </div>
-                            <h2>Editar mi información de usuario</h2>
+                            <h2></h2>
                             <div class="mv--1">
-                                <label>Nombre</label>
+                                <label th:text="#{common.name}"></label>
                                 <input type="text" class="form-control" id="name" th:field="*{user.name}" th:value="${user.name}">
                             </div>
                             <div class="mv--1">
-                                <label>Primer apellido</label>
+                                <label th:text="#{common.first-name}"></label>
                                 <input type="text" class="form-control" id="firstName" th:field="*{user.firstName}" th:value="${user.firstName}">
                             </div>
                             <div class="mv--1">
-                                <label>Segundo apellido</label>
+                                <label th:text="#{common.last-name}"></label>
                                 <input type="text" class="form-control" id="lastName" th:field="*{user.lastName}" th:value="${user.lastName}">
                             </div>
                             <div class="mv--1">
-                                <label>Dirección</label>
+                                <label th:text="#{common.address}"></label>
                                 <input type="text" class="form-control" id="address" th:field="*{user.address}" th:value="${user.address}">
                             </div>
                             <div class="mv--1">
-                                <label>Ciudad</label>
+                                <label th:text="#{common.city}"></label>
                                 <input type="text" class="form-control" id="city" th:field="*{user.city}" th:value="${user.city}">
                             </div>
-                            <button type="submit" class="btn btn-lg">Actualizar información</button>
+                            <button type="submit" class="btn btn-lg" th:text="#{profile.update}"></button>
                         </form>
                     </div>
                     <div class="col-lg-8 mb--5">
-                        <h2>Mis pedidos</h2>
+                        <h2 th:text="#{profile.my-orders}"></h2>
                         <div class="order__table mv--2">
                             <div th:if="${orders.size() > 0}" th:each="order : ${orders}">
                                 <span class="as-center" th:text="'Pedido #' + ${order.orderId}"></span>
-                                <span class="as-center" th:text="${order.date}"></span>
-                                <a th:href="@{'/pedidos/' + ${order.orderId}}">Ver detalles</a>
+                                <span class="as-center" th:text="#{order.date}"></span>
+                                <a th:href="@{'/pedidos/' + ${order.orderId}}" th:text="#{profile.see-details}"></a>
                             </div>
                             <div th:if="${orders.size() == 0}">
-                                <p class="m--0">No existen pedidos realizados.</p>
+                                <p class="m--0" th:text="#{profile.no-orders}"></p>
                             </div>
                         </div>
                     </div>
