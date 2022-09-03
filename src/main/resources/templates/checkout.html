@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-    <title>Checkout | Vegan Foods</title>
+    <title th:text="#{checkout.title} + ' | Vegan Foods'"></title>
 </head>
 <body>
 <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -10,12 +10,12 @@
     <div class="container">
         <div class="row mt--5">
             <div class="col-lg-12">
-                <h1>Checkout</h1>
+                <h1 th:text="#{checkout.title}"></h1>
             </div>
         </div>
         <div class="row mb--5">
             <div class="col-lg-6">
-                <h3>Datos del pedido</h3>
+                <h3 th:text="#{checkout.subtitle}"></h3>
                 <div class="order__table mv--2">
                     <img th:src="${product.image}" th:alt="${product.name}" class="order__table__img" />
                     <a th:href="@{'/productos/' + ${product.id}}" class="as-center"><span th:text="${product.name}"></span></a>
@@ -23,7 +23,7 @@
                     <span class="as-center" th:text="${quantity}"></span>
                 </div>
                 <div class="d-flex">
-                    <h4>Total del pedido: <span class="c--green" th:text="${totalPrice} + '€'"></span></h4>
+                    <h4><span th:text="#{checkout.subtitle}"></span> <span class="c--green" th:text="${totalPrice} + '€'"></span></h4>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -31,14 +31,14 @@
                     <input class="d-none" type="number" id="productId" name="productId" th:value="${product.id}" />
                     <input class="d-none" type="number" id="quantity" name="quantity" th:value="${quantity}" />
                     <div class="mv--1">
-                        <label for="shippingAddress" class="form-label">Dirección de envío</label>
-                        <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" placeholder="Escribe aquí la dirección..." />
+                        <label for="shippingAddress" class="form-label" th:text="#{checkout.address}"></label>
+                        <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" th:placeholder="#{checkout.address-placeholder}" />
                     </div>
                     <div class="mv--1">
                         <input type="checkbox" id="expressShipping" name="expressShipping" />
-                        <label for="expressShipping" class="form-label">¿Solicitar envío express?</label>
+                        <label for="expressShipping" class="form-label" th:text="#{checkout.express-shipping}"></label>
                     </div>
-                    <button type="submit" class="btn btn-lg mt--1">Completar pedido</button>
+                    <button type="submit" class="btn btn-lg mt--1" th:text="#{checkout.place-order}"></button>
                 </form>
             </div>
         </div>

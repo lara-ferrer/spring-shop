@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
-        <title>Registro completado | Vegan Foods</title>
+        <title th:text="#{register-ok.meta-title} + ' | Vegan Foods'"></title>
     </head>
     <body>
         <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -11,10 +11,10 @@
                 <div class="row">
                     <div class="col-lg-12 mv--5">
                         <div class="alert alert-success" role="alert">
-                            <p class="m--0">Usuario <strong th:text="${user.username}"></strong> registrado correctamente.</p>
+                            <p class="m--0"><span th:text="#{common.user}"></span> <strong th:text="${user.username}"></strong> <span th:text="#{register-ok.success}"></span>.</p>
                         </div>
-                        <h1 class="intro__title">Registro completado con éxito</h1>
-                        <p>Ahora puedes acceder desde <a th:href="@{'/login'}">este enlace</a> a tu cuenta de usuario.</p>
+                        <h1 class="intro__title" th:text="#{register-ok.title}"></h1>
+                        <p><span th:text="#{register-ok.access}"></span> <a th:href="@{'/login'}" th:text="#{register-ok.link}"></a> <span th:text="#{register-ok.account}"></span></p>
                     </div>
                 </div>
             </div>

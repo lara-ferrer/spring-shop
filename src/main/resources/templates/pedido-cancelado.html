@@ -3,7 +3,7 @@
 <head>
     <span th:replace="fragments/metadata.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
     <link href="/css/checkout.css" rel="stylesheet">
-    <title>Pedido cancelado | Vegan Foods</title>
+    <title th:text="#{order-cancel.title} + ' | Vegan Foods'"></title>
 </head>
 <body>
 <span th:replace="fragments/header.html" xmlns:th="http://www.w3.org/1999/xhtml"></span>
@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row mv--5">
             <div class="col-lg-12">
-                <h1>Pedido cancelado</h1>
-                <p>Dirígete a la <strong><a th:href="@{'/tienda'}">tienda on-line</a></strong> si deseas hacer un nuevo pedido.</p>
+                <h1 th:text="#{order-cancel.title}"></h1>
+                <p><span th:text="#{order-cancel.first-text}"></span> <strong><a th:href="@{'/tienda'}" th:text="#{order-cancel.cta-text}"></a></strong> <span th:text="#{order-cancel.second-text}"></span></p>
             </div>
         </div>
     </div>

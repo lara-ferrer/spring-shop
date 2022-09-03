@@ -10,23 +10,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 mv--5">
-                        <h1>Iniciar sesión</h1>
+                        <h1 th:text="#{login.title}"></h1>
                         <form class="mt--2" th:action="@{/login}" method="post">
                             <div class="mv--1">
-                                <label for="username" class="visually-hidden">Usuario</label>
-                                <input type="text" id="username" class="form-control" placeholder="Nombre de usuario" name="username" required>
+                                <label for="username" class="visually-hidden" th:text="#{common.user}"></label>
+                                <input type="text" id="username" class="form-control" th:placeholder="#{common.username}" name="username" required>
                             </div>
                             <div class="mv--1">
-                                <label for="password" class="visually-hidden">Contraseña</label>
-                                <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" required>
+                                <label for="password" class="visually-hidden" th:text="#{common.password}"></label>
+                                <input type="password" id="password" class="form-control" th:placeholder="#{common.password}" name="password" required>
                             </div>
                             <div class="mv--1">
-                                <input type="checkbox" value="remember-me"> Recordarme</input>
+                                <input type="checkbox" value="remember-me" th:text="#{login.remember}" />
                             </div>
-                            <button type="submit" class="btn btn-lg">Entrar</button>
+                            <button type="submit" class="btn btn-lg" th:text="#{login.enter}"></button>
                             <br/><br/>
                             <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                                Usuario y/o contraseña incorrectos. Por favor vuelve a intentarlo de nuevo.
+                                <span th:text="#{login.error}"></span>
                             </div>
                         </form>
                     </div>
